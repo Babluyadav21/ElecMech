@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+@import "tailwindcss";
+
+/* Class-based dark mode: toggled via the `dark` class on <html> (see ThemeContext). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Oswald", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Semantic color tokens — light values are the defaults below.
+     Each is overridden inside `.dark` further down, and every utility
+     Tailwind generates from these (bg-base, text-fg, border-border, ...)
+     references the CSS variable, so it repaints automatically when the
+     `dark` class is toggled — no per-component dark: variants needed. */
+  --color-base: #F7F6F3;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F0EFEA;
+  --color-fg: #12181F;
+  --color-muted: #59636C;
+  --color-border: #E1DFD7;
+  --color-accent: #B45309;
+  --color-accent-strong: #92400E;
+  --color-on-accent: #FFFFFF;
+  --color-steel: #94A0A8;
+  --color-steel-2: #6B7680;
+
+  --animate-draw: draw 2.4s ease-out forwards;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.9; }
+  }
+}
+
+/* Dark theme overrides. Because Tailwind's generated utilities reference
+   var(--color-*) rather than the literal value, redefining these variables
+   here is enough to re-theme every component that uses the semantic tokens. */
+.dark {
+  --color-base: #0B1220;
+  --color-surface: #101929;
+  --color-surface-alt: #0E1626;
+  --color-fg: #F2F1EC;
+  --color-muted: #8CA0B3;
+  --color-border: #24314A;
+  --color-accent: #E8A33D;
+  --color-accent-strong: #C17F1E;
+  --color-on-accent: #0B0F16;
+  --color-steel: #3D5A73;
+  --color-steel-2: #7C93A8;
+}
+
+:root {
+  --grid-line: rgba(18, 24, 31, 0.055);
+  --shadow-card: 0 1px 2px rgba(18, 24, 31, 0.05), 0 10px 24px -18px rgba(18, 24, 31, 0.10);
+  color-scheme: light;
+}
+.dark {
+  --grid-line: rgba(140, 160, 179, 0.09);
+  --shadow-card: 0 0 0 1px rgba(36, 49, 74, 0.5), 0 22px 48px -30px rgba(56, 189, 248, 0.18);
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-base text-fg font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Smooth, short theme transition on the properties that actually change
+     between light and dark. Universal selector has the lowest possible
+     specificity, so any element with its own explicit Tailwind transition
+     utility (transition-transform, transition-colors, etc.) simply overrides
+     this — it never fights Framer Motion's transform/opacity animations. */
+  *, *::before, *::after {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 220ms;
+    transition-timing-function: ease;
+  }
+}
+
+@layer utilities {
+  .card-surface {
+    @apply border border-border bg-surface;
+    box-shadow: var(--shadow-card);
+  }
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .spec-tag {
+    @apply relative inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-muted uppercase pl-3;
+  }
+  .spec-tag::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 2px;
+    background: var(--color-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
