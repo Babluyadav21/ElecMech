@@ -88,16 +88,17 @@ export default function Home() {
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 bg-[#FCA20B] text-on-accent px-7 py-3.5 font-semibold hover:bg-[#fca20c] transition-colors"
+                className="group inline-flex items-center gap-2 bg-[#FCA20B] text-on-accent px-7 py-3.5 font-semibold transition-[background-color,transform,box-shadow] duration-200 hover:bg-[#fca20c] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.98]"
               >
                 Request a Quote
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 border border-border px-7 py-3.5 font-semibold text-white hover:border-muted transition-colors bg-[#0E5079]"
+                className="group inline-flex items-center gap-2 border border-border px-7 py-3.5 font-semibold text-white transition-[background-color,border-color,transform,box-shadow] duration-200 hover:border-muted hover:bg-[#12608e] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-[0.98] bg-[#0E5079]"
               >
                 Explore Our Solutions
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
           </motion.div>
@@ -127,7 +128,7 @@ export default function Home() {
                     type="button"
                     aria-label={`Show slide ${index + 1}`}
                     onClick={() => setActiveSlide(index)}
-                    className={`h-2.5 rounded-full transition-all ${
+                    className={`h-2.5 rounded-full transition-all duration-300 hover:scale-125 active:scale-95 ${
                       index === activeSlide ? "w-2 bg-[#FCA20B]" : "w-1.5 bg-white/75"
                     }`}
                   />
@@ -182,9 +183,9 @@ export default function Home() {
               engineers and technicians manage every stage in-house — giving industrial clients a
               single, accountable partner for their electrical and automation needs.
             </p>
-            <Link to="/about" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+            <Link to="/about" className="group mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">
               More About Us
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
         </div>
@@ -199,9 +200,9 @@ export default function Home() {
               heading="Electrical & automation panels engineered to spec."
               description="A comprehensive range of panels manufactured for industrial, commercial and infrastructure applications."
             />
-            <Link to="/products" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent shrink-0">
+            <Link to="/products" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 shrink-0">
               View All Products
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -226,9 +227,9 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link to="/services" className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+            <Link to="/services" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0">
               View All Services
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
         </div>

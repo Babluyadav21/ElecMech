@@ -80,13 +80,31 @@ export default function Infrastructure() {
               key={c.title}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{
+                y: i % 3 === 0 ? -6 : 0,
+                scale: i % 3 === 1 ? 1.02 : 1,
+                rotate: i % 3 === 2 ? 0.35 : 0,
+                transition: { duration: 0.25, ease: "easeOut" },
+              }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-              className="p-6 card-surface"
+              className="group relative cursor-pointer overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"
             >
-              <c.icon className="h-6 w-6 text-accent" strokeWidth={1.5} />
+              <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+              <div className="flex h-11 w-11 items-center justify-center border border-border bg-surface-alt text-accent transition-[background-color,border-color,transform] duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
+                <c.icon
+                  className={`h-6 w-6 transition-transform duration-300 ${
+                    i % 3 === 0
+                      ? "group-hover:rotate-12 group-hover:scale-110"
+                      : i % 3 === 1
+                        ? "group-hover:-rotate-12 group-hover:translate-x-0.5"
+                        : "group-hover:scale-125 group-hover:-translate-y-0.5"
+                  }`}
+                  strokeWidth={1.5}
+                />
+              </div>
               <h3 className="mt-4 font-display text-base text-fg">{c.title}</h3>
-              <p className="mt-2 text-sm text-muted leading-relaxed">{c.text}</p>
+              <p className="mt-2 text-sm text-muted leading-relaxed transition-colors duration-300 group-hover:text-fg/80">{c.text}</p>
             </motion.div>
           ))}
         </div>
