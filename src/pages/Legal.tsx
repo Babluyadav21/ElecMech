@@ -57,7 +57,7 @@ function LegalPage({
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <span className="spec-tag">{pathname === "/terms" ? "Legal" : "Legal"}</span>
           <h1 className="mt-4 text-4xl text-fg">{title}</h1>
-          <div className="mt-8 space-y-8">
+          <div data-aos="fade-up" className="mt-8 space-y-8">
             {sections.map((s) => (
               <div key={s.heading}>
                 <h2 className="font-display text-xl text-fg">{s.heading}</h2>

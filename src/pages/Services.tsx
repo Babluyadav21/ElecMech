@@ -43,7 +43,7 @@ export default function Services() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <PhotoBackdrop src={terminalWiring} />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Engineering Services</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Support across the full project lifecycle.
@@ -57,7 +57,7 @@ export default function Services() {
 
       <section className="pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div data-aos="fade-up" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
               <ServiceCard key={s.title} title={s.title} description={s.description} icon={icons[i % icons.length]} index={i} />
             ))}

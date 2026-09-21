@@ -16,7 +16,7 @@ export default function Industries() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <PhotoBackdrop src={transmissionTower} />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Industries We Serve</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Trusted across sectors that demand reliability.
@@ -29,7 +29,7 @@ export default function Industries() {
       </section>
 
       <section className="pb-24">
-        <div className="mx-auto max-w-5xl px-6 lg:px-10 grid sm:grid-cols-2 gap-4">
+        <div data-aos="fade-up" className="mx-auto max-w-5xl px-6 lg:px-10 grid sm:grid-cols-2 gap-4">
           {industryGroups.map((g, i) => (
             <IndustryCard key={g.id} group={g} index={i} />
           ))}

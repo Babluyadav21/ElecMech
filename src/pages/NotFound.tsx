@@ -13,7 +13,7 @@ export default function NotFound() {
       />
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <BlueprintBackdrop />
-        <div className="relative mx-auto max-w-2xl px-6 lg:px-10 text-center">
+        <div data-aos="fade-up" className="relative mx-auto max-w-2xl px-6 lg:px-10 text-center">
           <span className="spec-tag">Error 404</span>
           <h1 className="mt-4 text-4xl sm:text-5xl text-fg">This page isn't part of the circuit.</h1>
           <p className="mt-4 text-muted">

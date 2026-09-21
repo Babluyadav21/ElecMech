@@ -20,7 +20,7 @@ export default function Products() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <PhotoBackdrop src={wiringDetail} />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Products &amp; Solutions</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Electrical panels and automation panels, built to spec.
@@ -30,7 +30,7 @@ export default function Products() {
 
       <section className="pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="flex flex-wrap gap-2 mb-10">
+          <div data-aos="fade-down" className="flex flex-wrap gap-2 mb-10">
             <FilterButton active={active === "all"} onClick={() => setActive("all")} label="All Products" />
             {productCategories.map((c) => (
               <FilterButton
@@ -46,7 +46,7 @@ export default function Products() {
           <div id="electrical" className="scroll-mt-28" />
           <div id="automation" className="scroll-mt-28" />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div data-aos="fade-up" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((p, i) => (
               <ProductCard key={p.slug} product={p} index={i} />
             ))}

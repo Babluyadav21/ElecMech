@@ -49,7 +49,7 @@ export default function About() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <BlueprintBackdrop />
          <PhotoBackdrop src={transmissionTower} />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">About ElecMech</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             One accountable engineering partner, from design to commissioning.
@@ -59,7 +59,7 @@ export default function About() {
 
       <section className="py-20 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
-          <div>
+          <div data-aos="fade-right">
             <p className="text-lg text-fg leading-relaxed">
               We are one of the leading manufacturers, suppliers and exporters of Control Panels
               and Automation Solution Systems, providing an excellent range of Industrial
@@ -87,7 +87,7 @@ export default function About() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/3] w-full border border-border overflow-hidden">
+          <div data-aos="fade-left" className="relative aspect-[4/3] w-full border border-border overflow-hidden">
             <img
               src={panelWallFront}
               alt="Row of ElecMech electrical panels on the manufacturing floor"
@@ -105,7 +105,7 @@ export default function About() {
             description="Quality is a crucial concern in anything purchased today — we keep a close eye on it, whether it's the product we keep in market, the product we manufacture, or the services we provide."
             align="center"
           />
-          <div className="mt-12 grid sm:grid-cols-3 gap-8 text-left">
+          <div data-aos="fade-up" className="mt-12 grid sm:grid-cols-3 gap-8 text-left">
             <VisionPoint
               title="Engineering capability"
               text="With strong panel-design skills, we offer a wide variety of power control panels and electrical distribution boards — including LT, MCC, PCC, AMF, APFCT, PLC, machine panels, sub-distribution panels and synchronizing panels."
@@ -126,7 +126,7 @@ export default function About() {
        
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionTitle tag="Why Choose Us" heading="Trust that's earned project after project." align="center" />
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div data-aos="fade-up" className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((w, i) => (
               <motion.div
                 key={w.title}

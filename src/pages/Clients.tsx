@@ -16,7 +16,7 @@ export default function Clients() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <BlueprintBackdrop />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Trusted By</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Clients who rely on us project after project.
@@ -31,7 +31,7 @@ export default function Clients() {
             heading="A partial list of organizations we've worked with."
             description="Names are listed as provided by the company — logos will be added once available for display."
           />
-          <div className="mt-10 ">
+          <div data-aos="fade-up" className="mt-10 ">
             <ClientWall clients={clients} />
           </div>
         </div>

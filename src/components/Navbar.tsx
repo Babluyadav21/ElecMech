@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navItems, site } from "@/data/site";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -49,7 +50,20 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5 group" aria-label={`${site.name} home`}>
-          <img src={logoMark} alt="" className="h-10 w-10 object-contain" />
+          <motion.img
+            src={logoMark}
+            alt=""
+            className="h-10 w-10 object-contain"
+            animate={prefersReducedMotion ? undefined : { rotate: 360, scale: [1, 1.06, 1] }}
+            transition={
+              prefersReducedMotion
+                ? undefined
+                : {
+                    rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
+                  }
+            }
+          />
           <span className="font-display text-lg leading-none tracking-wide text-fg">
             ElecMech
             <span className="block text-[10px] font-mono font-normal tracking-[0.2em] text-muted mt-0.5">
@@ -116,7 +130,7 @@ export default function Navbar() {
                   to={item.path}
                   ref={i === 0 ? firstMobileLinkRef : undefined}
                   className={({ isActive }) =>
-                    `py-3 text-base font-medium border-b border-border/60 last:border-none ${
+                    `py-3  font-medium border-b border-border/60 last:border-none ${
                       isActive ? "text-accent" : "text-fg/85"
                     }`
                   }

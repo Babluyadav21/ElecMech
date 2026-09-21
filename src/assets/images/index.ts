@@ -17,3 +17,4 @@ export { default as controlPanelFreestanding } from "./control-panel-freestandin
 export { default as toolsFlatlay } from "./tools-flatlay.jpg";
 export { default as transmissionTower } from "./transmission-tower.jpg";
 export { default as ogImage } from "./og-image.png";
+export { default as aboutt } from "./aboutt.jpg";

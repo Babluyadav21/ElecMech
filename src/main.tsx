@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/context/ThemeContext";
 import App from "./App";
 import "./index.css";
+import "aos/dist/aos.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

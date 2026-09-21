@@ -4,16 +4,16 @@ export const site = {
   tagline: "Powering Industries with Smart Engineering Solutions.",
   description:
     "ElecMech Engineering Solutions is a manufacturer, supplier and exporter of control panels, automation solution systems, electrical panels and LT distribution boards, delivering industrial automation solutions and automation services.",
-  phone: "+91-9654026861",
-  phoneHref: "tel:+919654026861",
+  phone: "+91-9000000000",
+  phoneHref: "tel:+919000000000",
   email: "enquiry.elecmech@gmail.com",
   emailHref: "mailto:enquiry.elecmech@gmail.com",
   address: {
     line1: "Plot No - 81, Kh No - 9/8",
-    line2: "Kamruddin Nagar, Shaheed Harkesh Singh Marg",
+    line2: "Shaheed Harkesh Singh Marg",
     line3: "New Delhi",
   },
-  mapsQuery: "Shaheed Harkesh Singh Marg, Kamruddin Nagar, New Delhi",
+  mapsQuery: "Shaheed Harkesh Singh Marg, New Delhi",
 };
 
 export interface NavItem {

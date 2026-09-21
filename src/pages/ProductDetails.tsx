@@ -34,7 +34,7 @@ export default function ProductDetails() {
           </Link>
 
           <div className="mt-8 grid lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2">
+            <div data-aos="fade-right" className="lg:col-span-2">
               <div className="relative aspect-square border border-border overflow-hidden">
                 <img
                   src={categoryImage[product.category]}
@@ -44,7 +44,7 @@ export default function ProductDetails() {
               </div>
               <p className="mt-2 text-xs text-muted">Representative photo — actual configuration may vary by specification.</p>
             </div>
-            <div className="lg:col-span-3">
+            <div data-aos="fade-left" className="lg:col-span-3">
               <span className="spec-tag">{product.category === "electrical" ? "Electrical Panel" : "Automation Panel"}</span>
               <h1 className="mt-4 text-3xl sm:text-4xl text-fg leading-tight">{product.name}</h1>
               <p className="mt-4 text-lg text-muted">{product.shortDescription}</p>
@@ -69,7 +69,7 @@ export default function ProductDetails() {
         <section className="py-20 border-t border-border">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <h2 className="text-2xl text-fg mb-8">Related Products</h2>
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div data-aos="fade-up" className="grid sm:grid-cols-3 gap-6">
               {related.map((p) => (
                 <Link key={p.slug} to={`/products/${p.slug}`} className="group p-6 card-surface hover:border-accent/50 transition-colors">
                   <h3 className="font-display text-lg text-fg">{p.name}</h3>

@@ -18,7 +18,7 @@ export default function Contact() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <BlueprintBackdrop />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Get In Touch</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Request a quote for your next project.
@@ -32,11 +32,11 @@ export default function Contact() {
 
       <section className="pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-5 gap-14">
-          <div className="lg:col-span-3 card-surface p-6 sm:p-8">
+          <div data-aos="fade-right" className="lg:col-span-3 card-surface p-6 sm:p-8">
             <EnquiryForm />
           </div>
 
-          <div className="lg:col-span-2 space-y-8">
+          <div data-aos="fade-left" className="lg:col-span-2 space-y-8">
             <div className="card-surface p-6 sm:p-8 space-y-6">
               <ContactRow icon={Phone} label="Call Us" value={site.phone} href={site.phoneHref} />
               <ContactRow icon={Mail} label="Email Us" value={site.email} href={site.emailHref} />
@@ -77,7 +77,7 @@ export default function Contact() {
       </section>
 
       <section className="pb-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-3 gap-3 sm:gap-4">
+        <div data-aos="fade-up" className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-3 gap-3 sm:gap-4">
           {[
             { src: toolsFlatlay, alt: "Electrician's tools and test equipment" },
             { src: transmissionTower, alt: "High-voltage transmission tower" },

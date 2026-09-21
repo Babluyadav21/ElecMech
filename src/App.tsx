@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import AOS from "aos";
 import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -14,6 +17,21 @@ import NotFound from "@/pages/NotFound";
 import Preloader from "@/components/Preloader";
 
 export default function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 80,
+    });
+  }, []);
+
+  useEffect(() => {
+    AOS.refreshHard();
+  }, [location.pathname]);
+
   return (
     <>
     <Preloader />

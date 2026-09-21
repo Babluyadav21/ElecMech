@@ -57,7 +57,7 @@ export default function Infrastructure() {
 
       <section className="relative pt-32 pb-16 overflow-hidden">
         <PhotoBackdrop src={panelRoomRow} />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Infrastructure</span>
           <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Built to manufacture, test and deliver at industrial scale.
@@ -74,7 +74,7 @@ export default function Infrastructure() {
       </section>
 
       <section className="pb-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div data-aos="fade-up" className="mx-auto max-w-7xl px-6 lg:px-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {capabilities.map((c, i) => (
             <motion.div
               key={c.title}
@@ -113,7 +113,7 @@ export default function Infrastructure() {
       <section className="py-20 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionTitle tag="Facility Gallery" heading="Inside our manufacturing and testing floor." />
-          <div className="mt-10">
+          <div data-aos="fade-up" className="mt-10">
             <Gallery items={galleryItems} categories={galleryCategories} />
           </div>
         </div>

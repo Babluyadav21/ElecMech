@@ -23,13 +23,13 @@ import { site } from "@/data/site";
 import {
   panelRoomRow,
   panelWallFront,
-  panelChecklist,
   wiringDetail,
   wiringCabinet,
   automationOpenPanel,
   automationOrangeBackplate,
   transformer,
   controlPanelFreestanding,
+  aboutt,
 } from "@/assets/images";
 
 const heroSlides = [
@@ -73,6 +73,7 @@ export default function Home() {
         <BlueprintBackdrop />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
+            data-aos="fade-right"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -104,6 +105,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
+            data-aos="fade-left"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15 }}
@@ -149,6 +151,8 @@ export default function Home() {
           {capabilities.map((c, i) => (
             <motion.div
               key={c.label}
+              data-aos="fade-up"
+              data-aos-delay={i * 80}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -165,14 +169,14 @@ export default function Home() {
       {/* About preview */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
-          <div className="relative aspect-[4/3] w-full border border-border overflow-hidden">
+          <div data-aos="fade-right" className="relative aspect-[4/3] w-full border border-border overflow-hidden">
             <img
-              src={panelChecklist}
+              src={aboutt}
               alt="ElecMech quality control check on an open electrical panel"
               className="h-full w-full object-cover"
             />
           </div>
-          <div>
+          <div data-aos="fade-left">
             <SectionTitle
               tag="About ElecMech"
               heading="Engineering excellence built on precision and reliability."
@@ -205,7 +209,7 @@ export default function Home() {
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div data-aos="fade-up" className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((p, i) => (
               <ProductCard key={p.slug} product={p} index={i} />
             ))}
@@ -221,7 +225,7 @@ export default function Home() {
             heading="Support across the full project lifecycle."
             align="center"
           />
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div data-aos="fade-up" className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.slice(0, 4).map((s, i) => (
               <ServiceCard key={s.title} title={s.title} description={s.description} icon={[Settings2, Cpu, Gauge, ShieldCheck][i]} index={i} />
             ))}
@@ -242,7 +246,7 @@ export default function Home() {
             tag="Industries We Serve"
             heading="Trusted across manufacturing, infrastructure and power."
           />
-          <div className="mt-12 grid sm:grid-cols-2 gap-4">
+          <div data-aos="fade-up" className="mt-12 grid sm:grid-cols-2 gap-4">
             {industryGroups.map((g, i) => (
               <IndustryCard key={g.id} group={g} index={i} />
             ))}
