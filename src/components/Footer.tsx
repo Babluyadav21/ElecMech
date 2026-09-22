@@ -24,7 +24,7 @@ export default function Footer() {
         <FooterColumn title="Solutions" links={footerLinks.solutions} />
         <FooterColumn title="Industries" links={footerLinks.industries} />
 
-        <div>
+        <div className="lg:col-span-2">
           <h3 className="spec-tag mb-4">Contact</h3>
           <ul className="space-y-3 text-sm text-muted">
             <li className="flex items-start gap-2.5">

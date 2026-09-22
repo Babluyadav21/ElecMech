@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 interface Props {
@@ -11,6 +11,8 @@ export default function CTASection({
   heading = "Have a requirement to discuss?",
   description = "Tell us about your project and our engineering team will get back to you with a tailored solution.",
 }: Props) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="relative border-y border-border bg-surface overflow-hidden">
       <div className="absolute inset-0 blueprint-grid opacity-30" />
@@ -26,10 +28,29 @@ export default function CTASection({
         </motion.div>
         <Link
           to="/contact"
-          className="shrink-0 inline-flex items-center gap-2 bg-[#0E5079] text-on-accent px-7 py-3.5 font-semibold hover:bg-accent-strong transition-colors"
+          className="group relative shrink-0 inline-flex items-center gap-2 overflow-hidden bg-[#0E5079] px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-strong"
         >
+          <motion.svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            preserveAspectRatio="none"
+          >
+            <motion.rect
+              x="1"
+              y="1"
+              width="calc(100% - 2px)"
+              height="calc(100% - 2px)"
+              fill="none"
+              stroke="#ffcc00"
+              strokeWidth="2"
+              pathLength="100"
+              strokeDasharray="24 76"
+              animate={prefersReducedMotion ? undefined : { strokeDashoffset: [0, -100] }}
+              transition={prefersReducedMotion ? undefined : { duration: 2.2, repeat: Infinity, ease: "linear" }}
+            />
+          </motion.svg>
           Send Enquiry
-          <ArrowUpRight className="h-4 w-4" />
+          <ArrowUpRight className="relative h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
       </div>
     </section>

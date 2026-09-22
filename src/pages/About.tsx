@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import {
   BadgeCheck,
+  CircuitBoard,
   Handshake,
   Layers,
   LineChart,
+  Lightbulb,
   Ruler,
   ShieldCheck,
   Sparkles,
+  UsersRound,
   Wrench,
 } from "lucide-react";
 import Seo from "@/components/Seo";
@@ -107,14 +110,20 @@ export default function About() {
           />
           <div data-aos="fade-up" className="mt-12 grid sm:grid-cols-3 gap-8 text-left">
             <VisionPoint
+              index={0}
+              icon={CircuitBoard}
               title="Engineering capability"
               text="With strong panel-design skills, we offer a wide variety of power control panels and electrical distribution boards — including LT, MCC, PCC, AMF, APFCT, PLC, machine panels, sub-distribution panels and synchronizing panels."
             />
             <VisionPoint
+              index={1}
+              icon={Lightbulb}
               title="Innovation, delivered"
               text="ElecMech has a track record of developing innovative products that deliver high quality at a competitive installed cost, reducing design and assembly time while easing installation and maintenance."
             />
             <VisionPoint
+              index={2}
+              icon={UsersRound}
               title="Customer satisfaction"
               text="Every product can be customized to the specifications our clients provide, backed by a network of distributors and responsive customer service."
             />
@@ -167,11 +176,35 @@ export default function About() {
   );
 }
 
-function VisionPoint({ title, text }: { title: string; text: string }) {
+function VisionPoint({
+  index,
+  icon: Icon,
+  title,
+  text,
+}: {
+  index: number;
+  icon: typeof CircuitBoard;
+  title: string;
+  text: string;
+}) {
   return (
-    <div>
-      <h3 className="font-display text-lg text-fg">{title}</h3>
-      <p className="mt-2 text-sm text-muted leading-relaxed">{text}</p>
-    </div>
+    <motion.article
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      className="group relative overflow-hidden border border-border bg-surface p-6 text-left shadow-[0_10px_30px_-24px_rgba(18,24,31,0.8)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-accent/60 hover:bg-base hover:shadow-[0_18px_38px_-24px_rgba(180,83,9,0.45)]"
+    >
+      <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-30 bg-accent transition-transform duration-500 group-hover:scale-x-100" />
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex h-12 w-12 items-center justify-center border border-accent/30 bg-accent/10 text-accent transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-110">
+          <Icon className="h-6 w-6" strokeWidth={1.5} />
+        </div>
+        <span className="font-mono text-xs tracking-[0.18em] text-muted">0{index + 1}</span>
+      </div>
+      <h3 className="mt-7 font-display text-xl text-fg transition-colors duration-300 group-hover:text-accent">
+        {title}
+      </h3>
+      <p className="mt-3 text-sm leading-relaxed text-muted">{text}</p>
+      <div className="mt-6 h-px w-10 bg-border transition-[width,background-color] duration-300 group-hover:w-20 group-hover:bg-accent" />
+    </motion.article>
   );
 }
