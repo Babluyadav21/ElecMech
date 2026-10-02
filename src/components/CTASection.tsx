@@ -41,7 +41,7 @@ export default function CTASection({
               width="calc(100% - 2px)"
               height="calc(100% - 2px)"
               fill="none"
-              stroke="#ffcc00"
+              stroke="#ffae00"
               strokeWidth="2"
               pathLength="100"
               strokeDasharray="24 76"

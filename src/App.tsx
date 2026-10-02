@@ -23,7 +23,7 @@ export default function App() {
     AOS.init({
       duration: 700,
       easing: "ease-out-cubic",
-      once: true,
+      once: false,
       offset: 80,
     });
   }, []);

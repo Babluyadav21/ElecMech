@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Electrical Panel Manufacturer & Industrial Automation Solutions"
+        title="ElecMech Engineering Solutions"
         description="ElecMech Engineering Solutions manufactures control panels, automation systems, electrical panels and LT distribution boards for industrial clients across India."
       />
 

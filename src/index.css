@@ -68,6 +68,13 @@
   color-scheme: dark;
 }
 
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+
 @layer base {
   html {
     scroll-behavior: smooth;
