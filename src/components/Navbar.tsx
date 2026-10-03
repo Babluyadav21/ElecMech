@@ -56,13 +56,17 @@ export default function Navbar() {
             <motion.img
               src={logoMark}
               alt=""
-              className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12 min-[1200px]:h-14 min-[1200px]:w-14"
-              animate={prefersReducedMotion ? undefined : { rotate: 360, scale: [1, 1.06, 1] }}
+              className="h-8 w-8 shrink-0 origin-center object-contain sm:h-9 sm:w-9 min-[1200px]:h-10 min-[1200px]:w-10"
+              animate={
+                prefersReducedMotion
+                  ? undefined
+                  : { rotate: 360, scale: [1, 1.04, 1] }
+              }
               transition={
                 prefersReducedMotion
                   ? undefined
                   : {
-                      rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+                      rotate: { duration: 10, repeat: Infinity, ease: "linear" },
                       scale: { duration: 2.4, repeat: Infinity, ease: "easeInOut" },
                     }
               }
@@ -82,7 +86,7 @@ export default function Navbar() {
                 to={item.path}
                 className={({ isActive }) =>
                   `whitespace-nowrap text-sm font-medium tracking-wide transition-colors ${
-                    isActive ? "text-accent" : "text-fg/80 hover:text-fg"
+                    isActive ? "text-accent" : "text-fg/80 hover:text-[#0E5079] hover:scale-[1.03] transition-transform duration-200"
                   }`
                 }
               >

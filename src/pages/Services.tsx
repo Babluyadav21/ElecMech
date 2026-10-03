@@ -41,11 +41,11 @@ export default function Services() {
         description="Panel design, manufacturing, industrial automation, project planning, testing and commissioning — engineering services from ElecMech."
       />
 
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-34 pb-10  lg:pt-48 lg:pb-10 overflow-hidden">
         <PhotoBackdrop src={terminalWiring} />
         <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Engineering Services</span>
-          <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
+          <h1 className="mt-4 text-2xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Support across the full project lifecycle.
           </h1>
           <p className="mt-5 text-muted max-w-xl">

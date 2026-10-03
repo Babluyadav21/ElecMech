@@ -17,7 +17,7 @@ export default function SectionTitle({ tag, heading, description, align = "left"
       className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}
     >
       <span className="spec-tag">{tag}</span>
-      <h2 className="mt-3 text-3xl sm:text-4xl leading-tight text-fg">{heading}</h2>
+      <h2 className="mt-3 text-2xl sm:text-4xl leading-tight text-fg">{heading}</h2>
       {description && (
         <p className="mt-4 text-base leading-relaxed text-muted">{description}</p>
       )}

@@ -18,11 +18,11 @@ export default function Products() {
         description="Browse ElecMech's range of LT panels, MCC, PCC, APFCT, PLC control panels, drive panels and more — electrical and automation panels engineered to spec."
       />
 
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-34 pb-10  lg:pt-48 lg:pb-10 overflow-hidden">
         <PhotoBackdrop src={wiringDetail} />
         <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Products &amp; Solutions</span>
-          <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
+          <h1 className="mt-4 text-2xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Electrical panels and automation panels, built to spec.
           </h1>
         </div>

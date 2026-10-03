@@ -18,6 +18,7 @@ import {
   automationOrangeBackplate,
   transformer,
   toolsFlatlay,
+  infrastra,
 } from "@/assets/images";
 
 const capabilities = [
@@ -55,11 +56,11 @@ export default function Infrastructure() {
         description="ElecMech is equipped with high-tech machinery and a qualified engineering team spanning panel design, manufacturing, testing and commissioning."
       />
 
-      <section className="relative pt-32 pb-16 overflow-hidden">
-        <PhotoBackdrop src={panelRoomRow} />
+      <section className="relative pt-34 pb-10  lg:pt-48 lg:pb-10 overflow-hidden">
+        <PhotoBackdrop src={infrastra} />
         <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Infrastructure</span>
-          <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
+          <h1 className="mt-4 text-2xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Built to manufacture, test and deliver at industrial scale.
           </h1>
           <p className="mt-5 text-muted max-w-xl">

@@ -16,7 +16,7 @@ import Seo from "@/components/Seo";
 import SectionTitle from "@/components/SectionTitle";
 import CTASection from "@/components/CTASection";
 import BlueprintBackdrop from "@/components/graphics/BlueprintBackdrop";
-import { panelWallFront, transmissionTower } from "@/assets/images";
+import { boardman, panelWallFront } from "@/assets/images";
 import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
 
 const focusAreas = [
@@ -49,18 +49,18 @@ export default function About() {
         description="ElecMech Engineering Solutions is a manufacturer, supplier and exporter of control panels and automation systems, backed by a skilled engineering team."
       />
 
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-10 overflow-hidden lg:pt-48 lg:pb-0">
         <BlueprintBackdrop />
-         <PhotoBackdrop src={transmissionTower} />
+        <PhotoBackdrop src={boardman} />
         <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">About ElecMech</span>
-          <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
+          <h1 className="mt-4 text-2xl sm:text-5xl max-w-2xl text-fg leading-tight">
             One accountable engineering partner, from design to commissioning.
           </h1>
         </div>
       </section>
 
-      <section className="py-20 border-t border-border">
+      <section className=" pt-4 pb-10  lg:pt-18 lg:pb-0 ">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-14 items-center">
           <div data-aos="fade-right">
             <p className="text-lg text-fg leading-relaxed">

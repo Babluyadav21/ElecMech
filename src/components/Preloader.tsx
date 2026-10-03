@@ -1,119 +1,281 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { logoMark } from "@/assets/images";
 
-const MIN_DISPLAY_MS = 2200;
-const HOLD_AT_FULL_MS = 500;
+type PreloaderProps = {
+  onComplete?: () => void;
+};
 
-/**
- * A brand moment shown once while the page's assets finish loading, styled
- * like the rest of the site (blueprint grid, copper accent, mono spec-tag
- * type) rather than a generic spinner. Progress is a real approximation:
- * it eases toward 92% while waiting on `window.load`, then completes once
- * both the page has actually loaded AND the minimum display time has
- * passed — so it never flashes on a fast connection, and never lies about
- * being done on a slow one.
- */
-export default function Preloader() {
-  const [visible, setVisible] = useState(true);
+const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
-  const prefersReducedMotion = useReducedMotion();
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    document.body.style.overflow = visible ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [visible]);
+    const duration = 2200;
+    const intervalTime = 20;
+    const increment = 100 / (duration / intervalTime);
 
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      const t = setTimeout(() => setVisible(false), 350);
-      return () => clearTimeout(t);
-    }
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        const next = prev + increment;
 
-    let pageLoaded = document.readyState === "complete";
-    const onLoad = () => {
-      pageLoaded = true;
-    };
-    window.addEventListener("load", onLoad);
+        if (next >= 100) {
+          clearInterval(interval);
 
-    const start = performance.now();
-    let rafId: number;
-    let holdTimeout: ReturnType<typeof setTimeout>;
+          setTimeout(() => {
+            setShow(false);
 
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const minElapsedRatio = Math.min(elapsed / MIN_DISPLAY_MS, 1);
-      const readyToComplete = pageLoaded && elapsed >= MIN_DISPLAY_MS;
+            setTimeout(() => {
+              onComplete?.();
+            }, 700);
+          }, 250);
 
-      setProgress(readyToComplete ? 1 : Math.min(minElapsedRatio * 0.92, 0.92));
+          return 100;
+        }
 
-      if (!readyToComplete) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        holdTimeout = setTimeout(() => setVisible(false), HOLD_AT_FULL_MS);
-      }
-    };
-    rafId = requestAnimationFrame(tick);
+        return next;
+      });
+    }, intervalTime);
 
-    return () => {
-      cancelAnimationFrame(rafId);
-      clearTimeout(holdTimeout);
-      window.removeEventListener("load", onLoad);
-    };
-  }, [prefersReducedMotion]);
+    return () => clearInterval(interval);
+  }, [onComplete]);
 
   return (
     <AnimatePresence>
-      {visible && (
+      {show && (
         <motion.div
-          key="preloader"
-          role="status"
-          aria-live="polite"
-          aria-label="Loading ElecMech Engineering Solutions"
-          initial={false}
-          exit={{ opacity: 0 }}
-          transition={{ duration: prefersReducedMotion ? 0.01 : 0.45, ease: "easeInOut" }}
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-base"
+          className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-white text-slate-900"
+          initial={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            scale: 1.03,
+            transition: {
+              duration: 0.7,
+              ease: [0.76, 0, 0.24, 1],
+            },
+          }}
         >
-          <div aria-hidden="true" className="absolute inset-0 blueprint-grid opacity-40" />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-transparent via-base/30 to-base" />
+          {/* BACKGROUND GRID */}
+          <div
+            className="absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage: `
+                linear-gradient(#111827 1px, transparent 1px),
+                linear-gradient(90deg, #111827 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+            }}
+          />
 
+          {/* AMBIENT GLOW */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative flex flex-col items-center gap-5"
-          >
-            <motion.img
-              src={logoMark}
-              alt=""
-              className="h-16 w-16 object-contain"
-              animate={prefersReducedMotion ? undefined : { rotate: 360 }}
-              transition={prefersReducedMotion ? undefined : { duration: 2.4, repeat: Infinity, ease: "linear" }}
-            />
+            className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[120px]"
+            animate={{
+              scale: [1, 1.15, 1],
+              opacity: [0.25, 0.45, 0.25],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
-            <div className="text-center">
-              <p className="font-display text-xl tracking-wide text-fg">ElecMech</p>
-              <p className="mt-1 text-[10px] font-mono tracking-[0.3em] text-muted">
-                ENGINEERING SOLUTIONS
-              </p>
-            </div>
+          {/* SCAN LINE */}
+          <motion.div
+            className="absolute left-0 top-0 h-[1px] w-full bg-red-500/20"
+            animate={{
+              top: ["0%", "100%"],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
 
-            <div className="w-48 h-[3px] bg-border overflow-hidden">
+          {/* MAIN CONTENT */}
+          <div className="relative z-10 flex w-full max-w-xl flex-col items-center px-6">
+
+            {/* ACTUAL LOGO */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.8,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.9,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="relative flex flex-col items-center"
+            >
+              {/* Logo glow */}
               <motion.div
-                className="h-full bg-accent"
-                animate={{ width: `${progress * 100}%` }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="absolute inset-0 -z-10 rounded-full bg-slate-200/80 blur-3xl"
+                animate={{
+                  scale: [0.8, 1.15, 0.8],
+                  opacity: [0.15, 0.35, 0.15],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
+
+              {/* Your actual logo */}
+              <motion.img
+                src={logoMark}
+                alt="ElecMech Engineering Solutions"
+                className="h-auto w-[110px] origin-center object-contain md:w-[150px]"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 1, rotate: 360 }}
+                transition={{
+                  duration: 12,
+                  delay: 0.5,
+                  ease: "linear",
+                  repeat: Infinity,
+                }}
+                style={{ filter: "none" }}
+              />
+
+              {/* Tagline */}
+              <motion.p
+                initial={{
+                  opacity: 1,
+                  y: 8,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 1,
+                  duration: 0.6,
+                }}
+                className="mt-4 text-center text-[9px] uppercase tracking-[0.35em] text-slate-500 md:text-xs"
+              >
+                ElecMech Engineering Solutions
+              </motion.p>
+            </motion.div>
+
+            {/* LOADING SECTION */}
+            <div className="mt-14 w-full max-w-md">
+
+              {/* Loading information */}
+              <div className="mb-3 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-[0.25em] text-slate-500">
+                  Initializing Systems...
+                </span>
+
+                <span className="font-mono text-xs text-slate-700">
+                  {Math.round(progress)
+                    .toString()
+                    .padStart(3, "")}
+                  %
+                </span>
+              </div>
+
+              {/* Progress bar */}
+              <div className="relative h-[2px] w-full overflow-hidden bg-slate-200">
+
+                {/* Main progress */}
+                <motion.div
+                  className="absolute left-0 top-0 h-full bg-red-500"
+                  style={{
+                    width: `${progress}%`,
+                  }}
+                />
+
+                {/* Moving light */}
+                <motion.div
+                  className="absolute top-0 h-full w-20 bg-slate-300/80 blur-sm"
+                  animate={{
+                    left: ["-20%", "120%"],
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+              </div>
             </div>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-muted">
-              {Math.round(progress * 100)}%
-            </p>
-          </motion.div>
+
+            {/* BOTTOM TEXT */}
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              transition={{
+                delay: 1.2,
+              }}
+              className="mt-8 flex items-center gap-3 text-center text-[9px] uppercase tracking-[0.3em] text-slate-500"
+            >
+              <motion.span
+                className="h-1.5 w-1.5 shrink-0 rounded-full bg-red-500"
+                animate={{
+                  opacity: [0.3, 1, 0.3],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                }}
+              />
+
+              Powering Industries with Smart Engineering Solutions..
+            </motion.div>
+          </div>
+
+          {/* TECHNICAL DETAILS */}
+          <div className="absolute left-6 top-6 font-mono text-[9px] text-slate-400">
+            SYS // 001
+          </div>
+
+          <div className="absolute right-6 top-6 font-mono text-[9px] text-slate-400">
+            ENG // 2026
+          </div>
+
+          <div className="absolute bottom-6 left-6 font-mono text-[9px] text-slate-400">
+            POWER // ON
+          </div>
+
+          <div className="absolute bottom-6 right-6 font-mono text-[9px] text-slate-400">
+            ELEC // MECH
+          </div>
+
+          {/* CORNER LINES */}
+
+          {/* Top Left */}
+          <div className="absolute left-6 top-14 h-8 w-[1px] bg-slate-200" />
+          <div className="absolute left-6 top-14 h-[1px] w-8 bg-slate-200" />
+
+          {/* Top Right */}
+          <div className="absolute right-6 top-14 h-8 w-[1px] bg-slate-200" />
+          <div className="absolute right-6 top-14 h-[1px] w-8 bg-slate-200" />
+
+          {/* Bottom Left */}
+          <div className="absolute bottom-14 left-6 h-8 w-[1px] bg-slate-200" />
+          <div className="absolute bottom-14 left-6 h-[1px] w-8 bg-slate-200" />
+
+          {/* Bottom Right */}
+          <div className="absolute bottom-14 right-6 h-8 w-[1px] bg-slate-200" />
+          <div className="absolute bottom-14 right-6 h-[1px] w-8 bg-slate-200" />
         </motion.div>
       )}
     </AnimatePresence>
   );
-}
+};
+
+export default Preloader;

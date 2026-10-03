@@ -111,12 +111,12 @@ body {
     @apply border border-border bg-surface;
     box-shadow: var(--shadow-card);
   }
-  .blueprint-grid {
+  /* .blueprint-grid {
     background-image:
       linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
       linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
     background-size: 40px 40px;
-  }
+  } */
   .spec-tag {
     @apply relative inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-muted uppercase pl-3;
   }

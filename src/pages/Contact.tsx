@@ -2,8 +2,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import Seo from "@/components/Seo";
 import EnquiryForm from "@/components/EnquiryForm";
 import BlueprintBackdrop from "@/components/graphics/BlueprintBackdrop";
+import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
 import { site } from "@/data/site";
-import { toolsFlatlay, transmissionTower, terminalWiring } from "@/assets/images";
+import { toolsFlatlay, transmissionTower, terminalWiring, contact } from "@/assets/images";
 
 export default function Contact() {
   const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&output=embed`;
@@ -16,11 +17,12 @@ export default function Contact() {
         description="Get in touch with ElecMech Engineering Solutions for electrical panels, automation solutions and engineering services. Request a quote today."
       />
 
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-34 pb-10  lg:pt-48 lg:pb-10 overflow-hidden">
         <BlueprintBackdrop />
+        <PhotoBackdrop src={contact} />
         <div data-aos="fade-up" className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <span className="spec-tag">Get In Touch</span>
-          <h1 className="mt-4 text-4xl sm:text-5xl max-w-2xl text-fg leading-tight">
+          <h1 className="mt-4 text-2xl sm:text-5xl max-w-2xl text-fg leading-tight">
             Request a quote for your next project.
           </h1>
           <p className="mt-5 text-muted max-w-xl">
