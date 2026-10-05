@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import Seo from "@/components/Seo";
+import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
+import { privacyPolicy, terms } from "@/assets/images";
 import { site } from "@/data/site";
 
 const privacyBody = [
@@ -50,14 +52,21 @@ function LegalPage({
   sections: { heading: string; text: string }[];
 }) {
   const { pathname } = useLocation();
+  const backdropImage = pathname === "/terms" ? terms : privacyPolicy;
+
   return (
     <>
       <Seo title={title} path={path} description={`${title} for ${site.name}.`} />
-      <section className="pt-32 pb-24">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10">
-          <span className="spec-tag">{pathname === "/terms" ? "Legal" : "Legal"}</span>
-          <h1 className="mt-4 text-4xl text-fg">{title}</h1>
-          <div data-aos="fade-up" className="mt-8 space-y-8">
+      <section className="relative pt-34 pb-10  lg:pt-48 lg:pb-10 overflow-hidden">
+        <PhotoBackdrop src={backdropImage} />
+        <div className="relative relative mx-auto max-w-7xl px-6 lg:px-10">
+          <span className="spec-tag">Legal</span>
+          <h1 className="mt-4 text-2xl text-fg">{title}</h1>
+        </div>
+      </section>
+      <section className="pb-24">
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+          <div data-aos="fade-up" className="space-y-8">
             {sections.map((s) => (
               <div key={s.heading}>
                 <h2 className="font-display text-xl text-fg">{s.heading}</h2>

@@ -24,3 +24,5 @@ export { default as contact } from "./contact.png";
 export { default as ogImage } from "./og-image.png";
 export { default as aboutt } from "./aboutt.jpg";
 export { default as hero1 } from "./herobg1.jpg";
+export { default as privacyPolicy } from "./pp.png";
+export { default as terms } from "./term.png";
