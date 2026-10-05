@@ -8,6 +8,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileTap={{ scale: 0.99 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.4, delay: (index % 6) * 0.06 }}
       className="group card-surface hover:border-accent/50 transition-colors"

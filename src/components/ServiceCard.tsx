@@ -14,6 +14,7 @@ export default function ServiceCard({ title, description, icon: Icon, index }: P
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -6 }}
+      whileTap={{ scale: 0.98 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.4, delay: (index % 6) * 0.06 }}
       className="group relative overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"

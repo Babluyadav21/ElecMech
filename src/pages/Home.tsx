@@ -73,7 +73,10 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28">
         <BlueprintBackdrop />
-        <PhotoBackdrop src={hero1} /> 
+        <PhotoBackdrop
+          src={hero1}
+          className="!inset-x-0 !top-0 !bottom-auto h-[52vh] lg:h-[62vh]"
+        />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             data-aos="fade-right"
@@ -162,8 +165,8 @@ export default function Home() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="flex items-center gap-3 "
             >
-              <c.icon className="h-7 w-7 text-[#0E5079] shrink-0 hover:scale-[1.09] transition-transform duration-200" strokeWidth={1.5} />
-              <span className="text-sm  font-display text-lg text-fg tracking-wide">{c.label}</span>
+              <c.icon className="h-10 w-10 bg-[#FCA20B] p-1 rounded-[10px] text-white shrink-0 hover:scale-[1.09] transition-transform duration-200" strokeWidth={1.5} />
+              <span className="text-sm  font-display text-lg text-fg  tracking-[0.10em]">{c.label}</span>
             </motion.div>
           ))}
         </div>

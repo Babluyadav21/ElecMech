@@ -87,6 +87,7 @@ export default function Infrastructure() {
                 rotate: i % 3 === 2 ? 0.35 : 0,
                 transition: { duration: 0.25, ease: "easeOut" },
               }}
+              whileTap={{ scale: 0.98 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
               className="group relative cursor-pointer overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"

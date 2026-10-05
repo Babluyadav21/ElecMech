@@ -131,6 +131,14 @@ body {
   }
 }
 
+@media (hover: none) {
+  .card-surface:active {
+    border-color: var(--color-accent);
+    background-color: var(--color-surface-alt);
+    box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-card);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

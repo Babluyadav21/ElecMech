@@ -146,6 +146,7 @@ export default function About() {
                   rotate: i % 2 === 0 ? 0.4 : -0.4,
                   transition: { duration: 0.25, ease: "easeOut" },
                 }}
+                whileTap={{ scale: 0.98 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: (i % 4) * 0.08 }}
                 className="group relative overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"
@@ -190,6 +191,7 @@ function VisionPoint({
   return (
     <motion.article
       whileHover={{ y: -8 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
       className="group relative overflow-hidden border border-border bg-surface p-6 text-left shadow-[0_10px_30px_-24px_rgba(18,24,31,0.8)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-accent/60 hover:bg-base hover:shadow-[0_18px_38px_-24px_rgba(180,83,9,0.45)]"
     >

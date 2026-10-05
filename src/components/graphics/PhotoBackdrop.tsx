@@ -12,8 +12,12 @@ interface Props {
 export default function PhotoBackdrop({ src, className = "" }: Props) {
   return (
     <div aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
-      <img src={src} alt="" className="h-full w-full object-cover object-center opacity-[0.9] dark:opacity-[0.9]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-base/15 via-base/45 to-base/90" />
+      <img
+        src={src}
+        alt=""
+        className="h-full w-full object-cover object-center opacity-[0.9] dark:opacity-[0.9]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-base/15 via-base/45 to-base" />
       <div className="absolute inset-0 blueprint-grid opacity-25" />
     </div>
   );
