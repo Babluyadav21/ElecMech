@@ -5,6 +5,7 @@ import SectionTitle from "@/components/SectionTitle";
 import CTASection from "@/components/CTASection";
 import Gallery, { type GalleryItem } from "@/components/Gallery";
 import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
+import IconFill from "@/components/IconFill";
 import {
   panelWallFront,
   wiringCabinet,
@@ -64,12 +65,7 @@ export default function Infrastructure() {
             Built to manufacture, test and deliver at industrial scale.
           </h1>
           <p className="mt-5 text-muted max-w-xl">
-            We're equipped with high-tech machinery and qualified personnel with expertise in
-            control panel design, panel manufacturing, development, project planning, testing and
-            commissioning of all types of electrical panels — including copper tin-coated bus bars
-            where required by the client. Our facility is also equipped with the latest
-            manufacturing and fabrication machinery, backed by a captive power generation setup
-            that protects production from supply disruption and fluctuations.
+           We are equipped with advanced machinery and skilled professionals specializing in control panel design, manufacturing, testing, and commissioning. Our modern facility, supported by captive power generation, ensures reliable and uninterrupted production.
           </p>
         </div>
       </section>
@@ -93,18 +89,7 @@ export default function Infrastructure() {
               className="group relative cursor-pointer overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"
             >
               <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <div className="flex h-11 w-11 items-center justify-center border border-border bg-surface-alt text-accent transition-[background-color,border-color,transform] duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
-                <c.icon
-                  className={`h-6 w-6 transition-transform duration-300 ${
-                    i % 3 === 0
-                      ? "group-hover:rotate-12 group-hover:scale-110"
-                      : i % 3 === 1
-                        ? "group-hover:-rotate-12 group-hover:translate-x-0.5"
-                        : "group-hover:scale-125 group-hover:-translate-y-0.5"
-                  }`}
-                  strokeWidth={1.5}
-                />
-              </div>
+              <IconFill icon={c.icon} className="h-11 w-11" iconClassName="h-6 w-6" />
               <h3 className="mt-4 font-display text-base text-fg">{c.title}</h3>
               <p className="mt-2 text-sm text-muted leading-relaxed transition-colors duration-300 group-hover:text-fg/80">{c.text}</p>
             </motion.div>

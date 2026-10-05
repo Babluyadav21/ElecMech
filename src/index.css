@@ -109,6 +109,7 @@ body {
 @layer utilities {
   .card-surface {
     @apply border border-border bg-surface;
+    border-radius: 5px;
     box-shadow: var(--shadow-card);
   }
   /* .blueprint-grid {

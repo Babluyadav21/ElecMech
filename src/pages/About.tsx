@@ -18,6 +18,7 @@ import CTASection from "@/components/CTASection";
 import BlueprintBackdrop from "@/components/graphics/BlueprintBackdrop";
 import { boardman, panelWallFront } from "@/assets/images";
 import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
+import IconFill from "@/components/IconFill";
 
 const focusAreas = [
   "Electrical panel manufacturing",
@@ -152,18 +153,7 @@ export default function About() {
                 className="group relative overflow-hidden p-6 card-surface transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-lg"
               >
                 <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-                <div className="flex h-11 w-11 items-center justify-center border border-border bg-surface-alt text-accent transition-[background-color,border-color,transform] duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
-                  <w.icon
-                    className={`h-6 w-6 transition-transform duration-300 ${
-                      i % 3 === 0
-                        ? "group-hover:rotate-12 group-hover:scale-110"
-                        : i % 3 === 1
-                          ? "group-hover:-rotate-12 group-hover:translate-x-0.5"
-                          : "group-hover:scale-125 group-hover:-translate-y-0.5"
-                    }`}
-                    strokeWidth={1.5}
-                  />
-                </div>
+                <IconFill icon={w.icon} className="h-11 w-11" iconClassName="h-6 w-6" />
                 <h3 className="mt-4 font-display text-base text-fg">{w.title}</h3>
                 <p className="mt-2 text-sm text-muted leading-relaxed transition-colors duration-300 group-hover:text-fg/80">{w.text}</p>
               </motion.div>
@@ -193,13 +183,11 @@ function VisionPoint({
       whileHover={{ y: -8 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="group relative overflow-hidden border border-border bg-surface p-6 text-left shadow-[0_10px_30px_-24px_rgba(18,24,31,0.8)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-accent/60 hover:bg-base hover:shadow-[0_18px_38px_-24px_rgba(180,83,9,0.45)]"
+      className="group relative overflow-hidden rounded-[5px] border border-border bg-surface p-6 text-left shadow-[0_10px_30px_-24px_rgba(18,24,31,0.8)] transition-[border-color,box-shadow,background-color] duration-300 hover:border-accent/60 hover:bg-base hover:shadow-[0_18px_38px_-24px_rgba(180,83,9,0.45)]"
     >
       <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-30 bg-accent transition-transform duration-500 group-hover:scale-x-100" />
       <div className="flex items-start justify-between gap-4">
-        <div className="flex h-12 w-12 items-center justify-center border border-accent/30 bg-accent/10 text-accent transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-110">
-          <Icon className="h-6 w-6" strokeWidth={1.5} />
-        </div>
+        <IconFill icon={Icon} className="h-12 w-12" iconClassName="h-6 w-6" />
         <span className="font-mono text-xs tracking-[0.18em] text-muted">0{index + 1}</span>
       </div>
       <h3 className="mt-7 font-display text-xl text-fg transition-colors duration-300 group-hover:text-accent">

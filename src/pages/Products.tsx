@@ -78,7 +78,7 @@ function FilterButton({
       id={id ? `filter-${id}` : undefined}
       type="button"
       onClick={onClick}
-      className={`px-4 py-2 text-sm font-medium border transition-colors ${
+      className={`cursor-pointer px-4 py-2 text-sm font-medium border transition-colors ${
         active ? "border-accent bg-accent/10 text-accent" : "border-border text-muted hover:text-fg"
       }`}
     >
