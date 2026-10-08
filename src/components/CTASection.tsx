@@ -28,7 +28,7 @@ export default function CTASection({
         </motion.div>
         <Link
           to="/contact"
-          className="group relative shrink-0 inline-flex items-center gap-2 overflow-hidden bg-[#0E5079] px-7 py-3.5 font-semibold text-on-accent transition-colors hover:bg-accent-strong"
+          className="group relative shrink-0 inline-flex items-center gap-2 overflow-hidden bg-[#0E5079] px-7 py-3.5 font-semibold text-white transition-colors hover:bg-accent-strong"
         >
           <motion.svg
             aria-hidden="true"
@@ -41,7 +41,7 @@ export default function CTASection({
               width="calc(100% - 2px)"
               height="calc(100% - 2px)"
               fill="none"
-              stroke="#ffae00"
+              stroke="#fcfbfb92"
               strokeWidth="2"
               pathLength="100"
               strokeDasharray="24 76"

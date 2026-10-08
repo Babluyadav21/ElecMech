@@ -155,7 +155,7 @@ export default function EnquiryForm() {
         <textarea
           id="message"
           name="message"
-          rows={5}
+          rows={3}
           className="w-full min-w-0 resize-y bg-base border border-border focus:border-accent px-4 py-3 text-fg placeholder:text-muted/60 outline-none transition-colors"
           placeholder="Tell us about your panel or automation requirement..."
         />
@@ -192,7 +192,7 @@ export default function EnquiryForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 bg-[#0E5079] text-on-accent px-8 py-3.5 font-semibold hover:bg-accent-strong transition-colors disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 bg-[#0E5079] text-white px-8 py-3.5 font-semibold hover:bg-accent-strong transition-colors disabled:opacity-60 disabled:cursor-not-allowed sm:w-auto"
       >
         {status === "submitting" && <Loader2 className="h-4 w-4 animate-spin" />}
         {status === "submitting" ? "Sending..." : "Send Enquiry"}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
   Cpu,
@@ -35,14 +35,14 @@ import {
 import PhotoBackdrop from "@/components/graphics/PhotoBackdrop";
 
 const heroSlides = [
-  { src: panelRoomRow, alt: "Row of electrical control panels installed on ElecMech's manufacturing floor" },
-  { src: panelWallFront, alt: "Front view of a completed electrical panel installation" },
-  { src: automationOpenPanel, alt: "Open industrial automation panel with internal components" },
-  { src: wiringCabinet, alt: "Custom wiring cabinet with organized electrical connections" },
-  { src: transformer, alt: "Electrical transformer installation in an industrial setting" },
-  { src: controlPanelFreestanding, alt: "Freestanding control panel in a production facility" },
-  { src: wiringDetail, alt: "Close-up of wiring detail in an electrical control assembly" },
-  { src: automationOrangeBackplate, alt: "Orange backplate automation hardware in an engineering environment" },
+  { src: panelRoomRow, alt: "Row of electrical control panels installed on ElecMech's manufacturing floor", label: "Electrical Panels" },
+  { src: panelWallFront, alt: "Front view of a completed electrical panel installation", label: "Panel Installation" },
+  { src: automationOpenPanel, alt: "Open industrial automation panel with internal components", label: "Industrial Automation" },
+  { src: wiringCabinet, alt: "Custom wiring cabinet with organized electrical connections", label: "Custom Wiring" },
+  { src: transformer, alt: "Electrical transformer installation in an industrial setting", label: "Power Systems" },
+  { src: controlPanelFreestanding, alt: "Freestanding control panel in a production facility", label: "Control Systems" },
+  { src: wiringDetail, alt: "Close-up of wiring detail in an electrical control assembly", label: "Precision Wiring" },
+  { src: automationOrangeBackplate, alt: "Orange backplate automation hardware in an engineering environment", label: "Automation Hardware" },
 ];
 
 const capabilities = [
@@ -117,30 +117,43 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] sm:aspect-[5/4] border border-border overflow-hidden">
-              <div
-                className="flex h-full w-full transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${activeSlide * 100}%)` }}
-              >
-                {heroSlides.map((slide) => (
-                  <div key={slide.src} className="h-full min-w-full">
-                    <img src={slide.src} alt={slide.alt} className="h-full w-full object-cover" />
-                  </div>
-                ))}
-              </div>
+            <div className="relative aspect-[4/5] sm:aspect-[5/4] border border-border overflow-hidden rounded-md">
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={heroSlides[activeSlide].src}
+                  src={heroSlides[activeSlide].src}
+                  alt={heroSlides[activeSlide].alt}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-base/70 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2 px-4">
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
+                <div aria-live="polite" className="min-w-0 text-white">
+                  <p className="truncate text-sm font-semibold drop-shadow">
+                    {heroSlides[activeSlide].label}
+                  </p>
+                  <p className="mt-0.5 font-mono text-[10px] tracking-[0.16em] text-white/75">
+                    {String(activeSlide + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center gap-1.5">
                 {heroSlides.map((slide, index) => (
                   <button
                     key={`${slide.src}-dot`}
                     type="button"
-                    aria-label={`Show slide ${index + 1}`}
+                    aria-label={`Show ${slide.label}`}
+                    aria-current={index === activeSlide ? "true" : undefined}
                     onClick={() => setActiveSlide(index)}
-                    className={`h-2.5 rounded-full transition-all duration-300 hover:scale-125 active:scale-95 ${
-                      index === activeSlide ? "w-2 bg-[#FCA20B]" : "w-1.5 bg-white/75"
+                    className={`h-2 rounded-full transition-all duration-300 hover:scale-125 active:scale-95 ${
+                      index === activeSlide ? "w-5 bg-[#FCA20B]" : "w-1.5 bg-white/75"
                     }`}
                   />
                 ))}
+                </div>
               </div>
             </div>
             <div className="hidden sm:block absolute -bottom-6 -left-6 bg-surface border border-border px-5 py-4 shadow-lg">
