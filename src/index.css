@@ -119,7 +119,7 @@ body {
     background-size: 40px 40px;
   } */
   .spec-tag {
-    @apply relative inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.18em] text-muted uppercase pl-3;
+    @apply relative inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-muted uppercase pl-3;
     background: linear-gradient(
       90deg,
       var(--color-surface) 0%,
